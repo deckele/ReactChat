@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "target": "es2015",
+        "jsx": "react",
+        "alwaysStrict": true,
+        "importHelpers": true,
+        "noEmitHelpers": true,
+        "strictNullChecks": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "removeComments": true,
+        "allowJs": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "skipLibCheck": false,
+        "typeRoots": [
+            "./node_modules/@types"
+        ]
+    },
+    "include": [
+        "./src/**/*.ts",
+        "./src/**/*.tsx"
+    ],
+    "exclude": [
+        "./node_modules/"
+    ]
+}
