@@ -12,6 +12,7 @@ const projectPaths = {
     ])
 };
 module.exports = {
+    mode: "development",
     entry: {
         app: projectPaths.src
     },
