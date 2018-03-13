@@ -82,7 +82,7 @@ export default class SignIn extends React.Component<SignInProps, SignInState> {
                         name="name"
                         type="text"
                         onChange={this.handleInputChange} />
-                    <input className="sign-in-submit" type="submit" value="Submit" />
+                    <input className="sign-in-submit" type="submit" value="Sign In" />
                 </form>
             </ReactModal>
         );

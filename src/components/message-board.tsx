@@ -8,6 +8,7 @@ export interface MessageBoardProps {
 }
 export interface MessageBoardState {
     messages: Message[];
+    hidden?: boolean;
 }
 
 export default class MessageBoard extends React.Component<MessageBoardProps, MessageBoardState> {
@@ -18,7 +19,7 @@ export default class MessageBoard extends React.Component<MessageBoardProps, Mes
     }
 
     componentDidMount(): void {
-        this.socket = io("/", {timeout: 1000});
+        this.socket = io("/");
         this.socket.on("message", (message: Message) => {
             this.setState({ messages: [message, ...this.state.messages] });
         });
@@ -46,12 +47,24 @@ export default class MessageBoard extends React.Component<MessageBoardProps, Mes
         }
     }
 
+    handleChatToggled = () => {
+        this.setState({hidden: !this.state.hidden});
+    }
+
     render() {
         const messages = this.state.messages.map(message => <MessageItem key={message.id} message={message} />);
+        const hidden = !!this.state.hidden;
         return (
-            <div className="chat-area">
-                <input className="chat-input" type="text" placeholder="Enter a message..." onKeyUp={this.handleSubmit} />
-                <ul className="messages-list">{messages}</ul>
+            <div className="chat-area" hidden={hidden}>
+                <div className="toggle-icon" onClick={this.handleChatToggled}>
+                    <svg>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                    </svg>
+                </div>
+                <div className="chat-wrapper">
+                    <input className="chat-input" type="text" placeholder="Enter a message..." onKeyUp={this.handleSubmit} />
+                    <ul className="messages-list">{messages}</ul>
+                </div>
             </div>
         );
     }
