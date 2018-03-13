@@ -31,6 +31,7 @@ export interface SignInState extends Partial<User> {
 
 const defaultOptions: ModalOptions = {
     isOpen: false,
+    ariaHideApp: false,
     style: {
         overlay: { backgroundColor: "rgba(140,140,160,0.5)", display: "flex" },
         content: { 
