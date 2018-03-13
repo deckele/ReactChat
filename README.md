@@ -14,5 +14,5 @@ npm install
 Start the app:
 
 ```bash
-node .
+npm start
 ```
