@@ -14,12 +14,6 @@ app.use(express.static(__dirname + '/public'));
 app.use(webpackDevMiddleware(webpack(webpackConfig)));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.post('/', (req, res) => {
-    const { Message } = req.body;
-    io.emit('message', Message);
-    res.sendStatus(200);
-});
-
 io.on('connection', socket => {
     socket.on('message', message => {
         socket.broadcast.emit('message', message);

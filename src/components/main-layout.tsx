@@ -22,13 +22,17 @@ export default class MainLayout extends React.Component<MainLayoutProps, MainLay
     }
 
     handleSignIn = (user: User): void => {
-        if (!user.avatar) {
-            const url = getRandomItemFromArray(mock.avatars);
-            this.setState({loggedInUser: {
-                name: user.name,
-                avatar: url
-            }});
+        let avatar = sessionStorage.getItem(user.name);
+        if (!avatar) {
+            avatar = getRandomItemFromArray(mock.avatars) as string;
+            sessionStorage.setItem(user.name, avatar);
         }
+        this.setState({
+            loggedInUser: {
+                name: user.name,
+                avatar
+            }
+        });        
     }
 
     handleLogOut = (): void => {
@@ -42,9 +46,9 @@ export default class MainLayout extends React.Component<MainLayoutProps, MainLay
             <div className="app-wrapper">
                 <SignIn onSignIn={this.handleSignIn} modalOptions={{isOpen: !isLoggedIn}}/>
                 <div className="sign-in-info-wrapper">
-                    <span>logged in as: <b>{name}</b></span>
+                    <span className="sign-in-info">Logged in as: <b>{name}</b></span>
                     {avatar && <img className="avatar-image" src={avatar} />}
-                    {isLoggedIn && <button className="logg-out-button" onClick={this.handleLogOut}>logg out</button>}
+                    {isLoggedIn && <span className="sign-in-info logg-out-button" onClick={this.handleLogOut}>Logg out</span>}
                 </div>
                 <h1 className="chat-title">Chat Away!</h1>
                 <MessageBoard loggedInUser={this.state.loggedInUser} />

@@ -77,21 +77,12 @@ export default class SignIn extends React.Component<SignInProps, SignInState> {
         return (
             <ReactModal {...{...defaultOptions, ...modalOptions}}>
                 <form className="sign-in-form" onSubmit={this.handleUserSubmit}>
-                    <label>pick username:
-                        <input 
-                            placeholder="username..."
-                            name="name"
-                            type="text"
-                            onChange={this.handleInputChange} />
-                    </label>
-                    <label>pick avatar url:
-                        <input 
-                            placeholder="avater url..."
-                            name="avatar"
-                            type="text"
-                            onChange={this.handleInputChange} />
-                    </label>
-                    <input type="submit" value="Submit" />
+                    <input className="sign-in-input"
+                        placeholder="username..."
+                        name="name"
+                        type="text"
+                        onChange={this.handleInputChange} />
+                    <input className="sign-in-submit" type="submit" value="Submit" />
                 </form>
             </ReactModal>
         );
