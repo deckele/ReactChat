@@ -66,3 +66,6 @@ frontend/employeesapp-webpack-configuration.js
 
 #VS Code
 .vscode/*
+
+#jest
+*.snap

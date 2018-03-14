@@ -40,7 +40,19 @@ module.exports = {
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 50000
+                            limit: 50000,
+                            name: 'assets/[name].[hash].[ext]'
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.(ico)(\?.*$|$)/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'assets/[name].[ext]'
                         }
                     }
                 ]
