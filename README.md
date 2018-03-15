@@ -16,3 +16,10 @@ Start the app:
 ```bash
 npm start
 ```
+
+## Run tests
+Run tests using npm:
+
+```bash
+npm run test
+```

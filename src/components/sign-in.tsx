@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactModal from "react-modal";
 import { User } from "../shared-types";
+import { defaultUser, forbiddenNames } from '../constants/user-constants';
 
 export interface ModalOptions {
     isOpen: boolean;
@@ -62,15 +63,19 @@ export default class SignIn extends React.Component<SignInProps, SignInState> {
     }
 
     handleUserSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+        event.preventDefault();        
         const { name, avatar } = this.state;
-        if (name) {
-            const user = {name, avatar};
-            this.props.onSignIn && this.props.onSignIn(user);
-        }
-        else {
+        if (!name) {
             alert("Name is required to chat!");
+            return;            
         }
-        event.preventDefault();
+        const isForbiddenName = forbiddenNames.indexOf(name) !== -1;
+        if (isForbiddenName) {
+            alert(`${name} is not a valid name.`);
+            return;
+        }
+        const user = {name, avatar, id: defaultUser.id};
+        this.props.onSignIn && this.props.onSignIn(user);
     }
 
     render() {

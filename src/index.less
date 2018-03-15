@@ -45,7 +45,7 @@
     .sign-in-info {
         color: white;
         font-size: 21px;
-        &.logg-out-button {
+        &.log-out-button {
             cursor: pointer;
             margin-right: 10px;
             margin-left: auto;
@@ -102,6 +102,11 @@
         height: 100%;
         overflow-y: auto;
         padding: 15px;
+        .connected-users-info {
+            margin-bottom: 10px;
+            color: grey;
+            font-size: 14px;
+        }
         .chat-input {
             .styled-input-mixin;
         }
@@ -111,6 +116,13 @@
     }
 }
 
+.notification {
+    background: #ededed;
+    padding: 3px 10px;
+    border-radius: 3px;
+    box-shadow: @shadow;
+    margin: 10px 0;
+}
 .message-item {
     word-wrap: break-word;
     overflow-wrap: break-word;

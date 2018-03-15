@@ -1,5 +1,5 @@
 export interface Message {
-    from: User;
+    from?: User;
     body: string;
     id: string;
 }
@@ -7,4 +7,5 @@ export interface Message {
 export interface User {
     name: string;
     avatar?: string;
+    id: string;
 }
