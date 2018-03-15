@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount, render, ReactWrapper } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 // import toJson from 'enzyme-to-json';
 import ReactModal from 'react-modal';
 // import { findDOMNode } from 'react-dom';
